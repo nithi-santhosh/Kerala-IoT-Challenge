@@ -1,0 +1,1881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kerala IoT Challenge Level: 1</title>
+
+    <!-- custom css file link -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <!--header section starts-->
+    <header class="header">
+        <div class="logo">
+            <h4>Kerala IoT Challenge</h4>
+        </div>
+
+        <nav class="navbar">
+                <a href="index.html#home">home</a>
+                <a href="index.html#about">about</a>
+                <a href="index.html#challenge">challenge</a>
+        </nav>
+
+        <div class="icons">
+            <div id="menu-btn">
+                <ion-icon name="grid-outline"></ion-icon>
+            </div>
+        </div> 
+    </header>
+    <!--header section ends-->
+
+    <!-- home section starts-->
+    <section class="home" id="home">
+        <div class="content">
+            <h3><span>Level: 1</span></h3>
+            <p>Basic Electronics & Arduino</p>
+        </div>
+    </section>
+
+    <!--home section ends -->
+
+    <!--intro to arduino section begins-->
+    <section class="arduinointro" id="arduinointro">
+        <h1 class="heading"><span>What is </span>Arduino?</h1>
+        <p>Arduino is an open-source electronics platform based on easy-to-use hardware and software. <a href="https://www.arduino.cc/en/Main/Products">Arduino boards</a> are able to read inputs - light on a sensor, a finger on a button, or a Twitter message - and turn it into an output - activating a motor, turning on an LED, publishing something online. You can tell your board what to do by sending a set of instructions to the microcontroller on the board. To do so you use the <a href="https://www.arduino.cc/reference/en/">Arduino programming language</a> (based on <a href="http://wiring.org.co/">Wiring</a>), and <a href="https://www.arduino.cc/en/software">the Arduino Software (IDE)</a>, based on <a href="https://processing.org/">Processing</a>.<br><br>Throughout this level I have used Arduino UNO R3 to do my experiments and assignments. The different components of Arduino UNO R3 is shown below:</p>
+        <img src="images/arduino.jpg">
+        <p>Now let's take a closer look at each components.</p>
+
+        <div class="container">
+
+            <div class="component" id="one">
+                <div class="image">
+                    <img src="images/arduino1.PNG" alt="">
+                </div>
+    
+                <div class="content">
+                    <h3>USB Connector</h3>
+                    <p>This is a printer USB port used to load a program from the Arduino IDE onto the Arduino board. The board can also be powered through this port.</p>
+                    
+                </div>
+            </div>
+
+            <div class="component" id="two">
+                <div class="image">
+                    <img src="images/arduino2.PNG" alt="">
+                </div>
+    
+                <div class="content">
+                    <h3>Power port</h3>
+                    <p>The Arduino board can be powered through an AC-to-DC adapter or a battery. The power source can be connected by plugging in a 2.1mm center-positive plug into the power jack of the board. The Arduino UNO board operates at a voltage of 5 volts, but it can withstand a maximum voltage of 20 volts. If the board is supplied with a higher voltage, there is a voltage regulator (it sits between the power port and USB connector) that protects the board from burning out.</p>
+                    
+                </div>
+            </div>
+
+            <div class="component" id="three">
+                <div class="image">
+                    <img src="images/arduino3.PNG" alt="">
+                </div>
+    
+                <div class="content">
+                    <h3>Microcontroller</h3>
+                    <p>It is the most prominent black rectangular chip with 28 pins. Think of it as the brains of your Arduino. The microcontroller used on the UNO board is Atmega328P by Atmel ( a major microcontroller manufacturer). Atmega328P has the following components in it:<br>
+                       1) Flash memory of 32KB. The program loaded from Arduino IDE is stored here.<br>
+                       2) RAM of 2KB. This is a runtime memory.<br>
+                       3) CPU: It controls everything that goes on within the device. It fetches the program instructions from flash memory and runs them with the help of RAM.<br>
+                       4) Electrically Erasable Programmable Read Only Memory (EEPROM) of 1KB. This is a type of nonvolatile memory, and it keeps the data even after device restart and reset.<br>
+                       Atmega328P is pre-programmed with bootloader. This allows you to directly upload a new Arduino program into the device, without using any external hardware programmer, making the Arduino UNO board easy to use.
+                    </p>
+                    
+                </div>
+            </div>
+
+            <div class="component" id="four">
+                <div class="image">
+                    <img src="images/arduino4.PNG" alt="">
+                </div>
+    
+                <div class="content">
+                    <h3>Analog input pins</h3>
+                    <p>The Arduino UNO board has 6 analog input pins, labeled “Analog 0 to 5.” These pins can read the signal from an analog sensor like a temperature sensor and convert it into a digital value so that the system understands. These pins just measure voltage and not the current because they have very high internal resistance. Hence, only a small amount of current flows through these pins.<br>Although these pins are labelled analog and are analog input by default, these pins can also be used for digital input or output.</p>
+                    
+                </div>
+            </div>
+
+            <div class="component" id="five">
+                <div class="image">
+                    <img src="images/arduino5.PNG" alt="">
+                </div>
+    
+                <div class="content">
+                    <h3>Digital pins</h3>
+                    <p>You can find these pins labeled “Digital 0 to 13.” These pins can be used as either input or output pins. When used as output, these pins act as a power supply source for the components connected to them. When used as input pins, they read the signals from the component connected to them.<br>When digital pins are used as output pins, they supply 40 milliamps of current at 5 volts, which is more than enough to light an LED.<br>Some of the digital pins are labeled with tilde (~) symbol next to the pin numbers (pin numbers 3, 5, 6, 9, 10, and 11). These pins act as normal digital pins but can also be used for Pulse-Width Modulation (PWM), which simulates analog output like fading an LED in and out.</p>
+                    
+                </div>
+            </div>
+
+            <div class="component" id="six">
+                <div class="image">
+                    <img src="images/arduino6.PNG" alt="">
+                </div>
+    
+                <div class="content">
+                    <h3>Reset switch</h3>
+                    <p>When this switch is clicked, it sends a logical pulse to the reset pin of the Microcontroller, and now runs the program again from the start. This can be very useful if your code doesn’t repeat, but you want to test it multiple times.</p>
+                    
+                </div>
+            </div>
+
+            <div class="component" id="seven">
+                <div class="image">
+                    <img src="images/arduino7.PNG" alt="">
+                </div>
+    
+                <div class="content">
+                    <h3>Crystal oscillator</h3>
+                    <p>This is a quartz crystal oscillator which ticks 16 million times a second. On each tick, the microcontroller performs one operation, for example, addition, subtraction, etc.</p>
+                    
+                </div>
+            </div>
+
+            <div class="component" id="eight">
+                <div class="image">
+                    <img src="images/arduino8.PNG" alt="">
+                </div>
+    
+                <div class="content">
+                    <h3>USB interface chip</h3>
+                    <p>Think of this as a signal translator. It converts signals in the USB level to a level that an Arduino UNO board understands.</p>
+                    
+                </div>
+            </div>
+
+            <div class="component" id="nine">
+                <div class="image">
+                    <img src="images/arduino9.PNG" alt="">
+                </div>
+    
+                <div class="content">
+                    <h3>TX – RX LEDs</h3>
+                    <p>TX stands for transmit, and RX for receive. These are indicator LEDs which blink whenever the UNO board is transmitting or receiving data.</p>
+                    
+                </div>
+            </div>            
+        </div>
+    </section>
+    <!--intro to arduino section ends-->
+
+    <!--software setup begins-->
+    <section class="setup" id="setup">
+        <h1 class="heading">Getting started <span>with Arduino...</span></h1>
+        <p>Before getting started, we need to setup the software to program the board. The Arduino Software (IDE) allows one to write programs and upload them to the board.<br>Since my operating system is windows-based , following steps were performed to setup the Arduino IDE.<br><br></p>
+        
+        <div class="ide" id="">
+            <div class="image">
+                <img src="images/setup1.PNG" alt="">
+            </div>
+
+            <div class="content">
+                <h3>Step: 1</h3>
+                <p>Download the Arduino IDE from <a href="https://www.arduino.cc/en/software">Arduino Software Page</a>.</p>
+                
+            </div>
+        </div> 
+
+        <div class="ide" id="">
+            <div class="image">
+                <img src="images/setup2.PNG" alt="">
+            </div>
+
+            <div class="content">
+                <h3>Step: 2</h3>
+                <p>To install the Arduino IDE, simply run the downloaded file from the software page. Allow the driver installation process when you get a warning from the operating system.</p>
+                
+            </div>
+        </div>
+        
+        <div class="ide" id="">
+            <div class="image">
+                <img src="images/setup3.PNG" alt="">
+            </div>
+
+            <div class="content">
+                <h3>Step: 3</h3>
+                <p>Choose the components to install and click next.</p>
+                
+            </div>
+        </div>
+
+        <div class="ide" id="">
+            <div class="image">
+                <img src="images/setup4.PNG" alt="">
+            </div>
+
+            <div class="content">
+                <h3>Step: 4</h3>
+                <p>Choose the installation directory and click install.</p>
+                
+            </div>
+        </div>
+
+        <div class="ide" id="">
+            <div class="image">
+                <img src="images/setup5.PNG" alt="">
+            </div>
+
+            <div class="content">
+                <h3>Step: 5</h3>
+                <p>The process will extract and install all the required files to execute properly the Arduino Software (IDE)</p>
+                
+            </div>
+        </div>
+
+        <p>The installed Arduino IDE will look like the image given below. Before uploading the code to our board, we will first need to select the board that we are using. We can do this by navigating to Tools > Port > {Board}.</p>
+        <img src="images/ide.PNG">
+        <p>Functions of Each Button in Tool Bars</p>
+        <img src="images/functions.PNG">
+
+    </section>
+    <!--software setup ends-->
+
+    <!--Programming begins-->
+    <section class="programming" id="progranmming">
+        <h1 class="heading"><span>Arduino</span> Programming...</h1>
+        <p>Arduino programs are written in the Arduino Integrated Development Environment (IDE). The Arduino programming language is based on a very simple hardware programming language called processing, which is similar to the C language. After the sketch is written in the Arduino IDE, it should be uploaded on the Arduino board for execution.<br><br>The structure of Arduino program is pretty simple. Arduino programs have a minimum of 2 blocks:<br><br>Preparation & Execution<br><br>Each block has a set of statements enclosed in curly braces.<br><br>setup( ) is the preparation block and loop( ) is an execution block.<br><br>The setup function is the first to execute when the program is executed, and this function is called only once. The setup function is used to initialize the pin modes and start serial communication. This function has to be included even if there are no statements to execute.<br><br>After the setup( ) function is executed, the execution block runs next. The execution block hosts statements like reading inputs, triggering outputs, checking conditions etc..<br><br>Now, let's do some experiments with Arduino.</p>
+    </section>
+
+    <!--Programming ends-->
+
+    <!--experiments begins-->
+    <section class="experiment" id="experiment">
+        <h1 class="heading">Experi<span>ments!!</span></h1>
+        
+        <div class="experiments">
+            <div class="accordion">
+
+                <!--experiment 01-->
+                <div class="accordion-item" id="exp1">
+                    <a class="accordion-link" href="#exp1">
+                        Experiment 01: Hello World LED Blinking
+                        <ion-icon name="chevron-up-outline" class="up"></ion-icon>
+                        <ion-icon name="chevron-down-outline" class="down"></ion-icon>
+                    </a>
+                    <div class="expdetails">
+                        <h1>Aim</h1>
+                        <p>The Aim of the experiment is to blink an LED using Arduino Uno Board.</p>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Components Required</h1>
+                        
+                            <ul type= circle>
+                                <li>Arduino UNO Board</li>
+                                <li>USB Cable</li>
+                                <li>LED (Any Color) x 1 Nos</li>
+                                <li>220 ohm Resistor X 1 Nos</li>
+                                <li>Breadboard</li>
+                                <li>Jumper Wires (Male to Male) X 2 Nos</li>
+                            </ul>
+                        
+                    </div>
+                    <div class="expdetails">
+                        <h1>Theory</h1>
+                        
+                        <p><span>LED</span><br><br>The LED is the abbreviation of light emitting diode. It is usually made of gallium arsenide, gallium phosphide semiconductor materials. The LED has two electrodes: a positive electrode and a negative one. It lights up only when a forward current passes. The colour of the light depends on the material it is made.<br><br>In general, the drive current for LED is 5-20mA. Therefore, in reality it usually needs an extra resistor for current limitation so as to protect the LED.</p>
+                        <img src="images/led.png" alt="led">
+                        
+                        <p><span>Resistor</span><br><br>The main function of the resistor is to limit currents.<br><br>There are two methods for connecting LED to pins of an Arduino board:</p>
+                        <img src="images/ledcon1.PNG" alt="">
+                        <p>As shown in the schematic diagram, the anode of the LED is connected to Arduino’s GPIO via a resistor, and the cathode to the ground (GND). When the GPIO outputs high level, the LED is on; when it outputs low, the LED is off.<br><br>The resistance of a current-limiting resistor is calculated as follows: <br><br>5~20mA current is required to make an LED on, and the output voltage of the Arduino UNO’s GPIO is 5V, so we can get the resistance:<br><br>R = U / I = 5V / (5~20mA) = 250Ω~1kΩ<br><br>Since an LED is a resistor itself, here we use a 220ohm resistor.</p>
+                        <img src="images/ledcon2.PNG" alt="">
+                        <p>As shown in the schematic diagram above, the anode of LED is connected to VCC(+5V), and the cathode of LED is connected to the Arduino’s GPIO. When the GPIO output low level, the LED is on; when the GPIO output high level, the LED is off.<br><br>This experiment is based on Method 1.</p>
+                    
+                        <p><span>Breadboard</span><br><br>The diagram shows how the breadboard holes are connected:</p>
+                        <img src="images/breadboard.PNG" alt="">
+                        <p>On larger breadboards there may be a break halfway along the top and bottom power supply rows. It is a good idea to link across the gap before you start to build a circuit, otherwise you may forget and part of your circuit will have no power!</p>
+                    
+                        <P><span>Jumper Wires</span><br><br>Jumper wires are simply wires that have connector pins at each end, allowing them to be used to connect two points to each other without soldering. Jumper wires are typically used with breadboards.</P>
+                        <img src="images/jumperwires.PNG" alt="">
+                    </div>
+                    <div class="expdetails">
+                        <h1>Circuit Diagram</h1>
+                        <img src="circuit images/circuit1.PNG" alt="circuit1">
+                    </div>
+                    <div class="expdetails">
+                        <h1>Code</h1>
+                        <div class="code" style="overflow: auto; height: 550px;">
+                            <pre>
+                                <code>
+                                    <xmp>int ledPin = 10;// define digital pin 10
+
+void setup()
+{
+    pinMode(ledPin, OUTPUT);// define pin with LED connected as output
+}
+
+void loop()
+{
+    digitalWrite(ledPin, HIGH);// set the LED on
+    delay(1000);// wait for a second
+    digitalWrite(ledPin, LOW);// set the LED off
+    delay(1000);// wait for a second
+}
+                                    </xmp>
+                                </code>
+                            </pre>
+                        </div>
+                        <p><span>Note:</span> Arduino always measures the time duration in millisecond. Therefore, whenever you mention the delay, keep it in milli seconds.</p>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Output</h1>
+                        <p>The LED blinked continuously with a time interval of 1 second.</p>
+                        <video controls loop class="video">
+                            <source src="output videos/exp01.mp4" >
+                        </video> 
+                    </div>
+                </div>
+
+                <!--experiment 02-->
+                <div class="accordion-item" id="exp2">
+                    <a class="accordion-link" href="#exp2">
+                        Experiment 02: Traffic Light
+                        <ion-icon name="chevron-up-outline" class="up"></ion-icon>
+                        <ion-icon name="chevron-down-outline" class="down"></ion-icon>
+                    </a>
+                    <div class="expdetails">
+                        <h1>Aim</h1>
+                        <p>In the previous experiment, we have done the LED blinking experiment with one LED. Now, it’s time to up the stakes and do a bit more complicated experiment-traffic lights. Actually, these two experiments are similar. While in this traffic lights experiment, we use 3 LEDs with different colors rather than 1 LED.</p>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Components Required</h1>
+                        <ul type = circle>
+                            <li>Arduino UNO board</li>
+                            <li>USB cable</li>
+                            <li>Red M5 LED x 1 Nos</li>
+                            <li>Yellow M5 LED x 1 Nos</li>
+                            <li>Green M5 LED x 1 Nos</li>
+                            <li>220Ω resistor x 3 Nos</li>
+                            <li>Breadboard</li>
+                            <li>Jumper wires (Male to Male) x 4 Nos</li>
+                        </ul>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Circuit Diagram</h1>
+                        <img src="circuit images/circuit2.PNG" alt="circuit2">
+                    </div>
+                    <div class="expdetails">
+                        <h1>Code</h1>
+                        <div class="code" style="overflow: auto; height: 550px;">
+                            <pre>
+                                <code>
+                                    <xmp>int redled = 10;// initialize digital pin 10
+int yellowled = 7;// initialize digital pin 7
+int greenled = 4;// initialize digital pin 4
+                                        
+void setup() 
+{
+    pinMode(redled, OUTPUT);// set the pin with red LED as "output"
+    pinMode(yellowled, OUTPUT);// set the pin with yellow LED as "output"
+    pinMode(greenled, OUTPUT);// set the pin with green LED as "output"
+                 
+}
+                                      
+void loop() 
+{
+    digitalWrite(greenled, HIGH);// turn on green LED
+    delay(5000);// wait 5 seconds
+                                        
+    digitalWrite(greenled, LOW);// turn off green LED
+    for(int i=0; i<3; i++)// blinks for 3 times
+    {
+        delay(500);// wait 0.5 second
+        digitalWrite(yellowled, HIGH);// turn on yellow LED
+        delay(500);// wait 0.5 second
+        digitalWrite(yellowled, LOW);// turn off yellow LED
+    }
+                                       
+    delay(500);// wait 0.5 second
+    digitalWrite(redled, HIGH);// turn on red LED
+    delay(5000);// wait 5 seconds
+    digitalWrite(redled, LOW);// turn off red LED
+}
+                                    </xmp>
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Output</h1>
+                        <p>In Traffic light experiment, the green LED turns on for about 5 second, then it is turned off. Then the yellow LED blinks 3 times with a time interval of 0.5 second. Then the red LED is turned on for about 5 seconds. This process continues.</p>
+                        <video controls loop class="video">
+                            <source src="output videos/exp02.mp4" >
+                        </video>
+                    </div>
+                </div>
+
+                <!--experiment 03-->
+                <div class="accordion-item" id="exp3">
+                    <a class="accordion-link" href="#exp3">
+                        Experiment 03: LED Chasing Effect
+                        <ion-icon name="chevron-up-outline" class="up"></ion-icon>
+                        <ion-icon name="chevron-down-outline" class="down"></ion-icon>
+                    </a>
+                    <div class="expdetails">
+                        <h1>Aim</h1>
+                        <p>We often see billboards composed of colorful LEDs. They are constantly changing to form various light effects. In this experiment, we compile a program to simulate LED chasing effect.</p>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Components Required</h1>
+                        <ul type=circle>
+                            <li>M5 LED (Any color) x 6 Nos</li>
+                            <li>Arduino UNO board</li>
+                            <li>220Ω resistor x 6 Nos</li>
+                            <li>Breadboard</li>
+                            <li>USB cable</li>
+                            <li>Jumper wires (Male to Male) x 8 Nos</li>
+                        </ul>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Circuit Diagram</h1>
+                        <img src="circuit images/circuit3.PNG" alt="circuit3">
+                    </div>
+                    <div class="expdetails">
+                        <h1>Code</h1>
+                        <div class="code" style="overflow: auto; height: 550px;">
+                            <pre>
+                                <code>
+                                    <xmp>int BASE = 2;// the I/O pin for the first LED
+int NUM = 6;// number of LEDs
+                                        
+void setup() 
+{
+    for(int i=BASE; i< BASE+NUM; i++)
+    {
+        pinMode(i, OUTPUT);// set I/O pins as output
+    }
+}
+                                        
+void loop() 
+{
+    for(int i=BASE; i<BASE+NUM; i++)
+    {
+        digitalWrite(i, LOW);// set I/O pins as "low", turn off LEDs one by one
+        delay(200);// delay 0.2 second
+    }
+    for(int i=BASE; i<BASE+NUM; i++)
+    {
+        digitalWrite(i, HIGH);// set I/O pins as "high", turn on LEDs one by one
+        delay(200);// delay 0.2 second
+    }
+}
+                                    </xmp>
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Output</h1>
+                        <p>The given set of LEDs turns on one by one with a time delay of 0.2 second each and then turns off one by one with a time delay of 0.2 second each and thus creating a chasing effect.</p>
+                        <video controls loop class="video">
+                            <source src="output videos/exp03.mp4" >
+                        </video>
+                        <p><span>Note:</span>Since there is a break halfway along the top and bottom power supply rows of the breadboard, the gap is linked using a jumper wire.</p>
+                    </div>
+                </div>
+
+                <!--experiment 04-->
+                <div class="accordion-item" id="exp4">
+                    <a class="accordion-link" href="#exp4">
+                        Experiment 04: Button Controlled LED
+                        <ion-icon name="chevron-up-outline" class="up"></ion-icon>
+                        <ion-icon name="chevron-down-outline" class="down"></ion-icon>
+                    </a>
+                    <div class="expdetails">
+                        <h1>Aim</h1>
+                        <p>In this experiment we will manually try to turn on a LED using a button.</p>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Components Required</h1>
+                        <ul type = circle>
+                            <li>Arduino UNO board</li>
+                            <li>Button switch x 1 Nos</li>
+                            <li>Red M5 LED x 1 Nos</li>
+                            <li>220Ω resistor x 1 Nos</li>
+                            <li>10KΩ resistor x 1 Nos</li>
+                            <li>Breadboard</li>
+                            <li>Jumper wires (Male to Male) x 7 Nos</li>
+                            <li>USB cable</li>
+                        </ul>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Theory</h1>
+                        <p><span>Push Button</span><br><br>Buttons are a common component used to control electronic devices. They are usually used as switches to connect or disconnect circuits. Although buttons come in a variety of sizes and shapes, the one used in this experiment will be a 12mm button as shown below.</p>
+                        <img src="images/button1.jpg" alt="">
+                        <p>The working of a push button is shown below:</p>
+                        <img src="images/button2.PNG" alt="">
+                    </div>
+                    <div class="expdetails">
+                        <h1>Circuit Diagram</h1>
+                        <img src="circuit images/circuit4.PNG" alt="circuit4">
+                    </div>
+                    <div class="expdetails">
+                        <h1>Code</h1>
+                        <div class="code" style="overflow: auto; height: 550px;">
+                            <pre>
+                                <code>
+                                    <xmp>int ledpin = 11;// initialize pin 11
+int inpin = 7;// initialize pin 7
+int val;// define val
+                                        
+void setup() 
+{
+    pinMode(ledpin, OUTPUT);// set LED pin as "output"
+    pinMode(inpin, INPUT);// set button pin as "input"
+}
+                                        
+void loop() 
+{
+    val = digitalRead(inpin);// read the level value of pin 7 and assign it to val
+    if(val == LOW)// check if the button is pressed, if yes, turn on the LED
+    {
+        digitalWrite(ledpin, LOW);
+    }
+    else
+    {
+        digitalWrite(ledpin, HIGH);
+    }
+}
+                                    </xmp>
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Output</h1>
+                        <p>The given LED turns on when the button is pressed, otherwise it turns off.</p>
+                        <video controls loop class="video">
+                            <source src="output videos/exp04.mp4" >
+                        </video>
+                        <p><span>Note:</span>Since there is a break halfway along the top and bottom power supply rows of the breadboard, the gap is linked using a jumper wire.</p>
+                    </div>
+                </div>
+
+                <!--experiment 05-->
+                <div class="accordion-item" id="exp5">
+                    <a class="accordion-link" href="#exp5">
+                        Experiment 05: Buzzer
+                        <ion-icon name="chevron-up-outline" class="up"></ion-icon>
+                        <ion-icon name="chevron-down-outline" class="down"></ion-icon>
+                    </a>
+                    <div class="expdetails">
+                        <h1>Aim</h1>
+                        <p>In this experiment we will try to activate a Buzzer using Arduino Board</p>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Components Required</h1>
+                        <ul type = circle>
+                            <li>Arduino UNO board</li>
+                            <li>Buzzer x 1 Nos</li>
+                            <li>Breadboard</li>
+                            <li>Jumper wires (Male to Male) x 2 Nos</li>
+                            <li>USB cable</li>
+                        </ul>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Theory</h1>
+                        <p><span>Buzzer</span><br><br>Buzzers are electric sounding devices that generate sounds</p>
+                        <img src="images/buzzer.jpg" alt="">
+                    </div>
+                    <div class="expdetails">
+                        <h1>Circuit Diagram</h1>
+                        <img src="circuit images/circuit5.PNG" alt="circuit5">
+                    </div>
+                    <div class="expdetails">
+                        <h1>Code</h1>
+                        <div class="code" style="overflow: auto; height: 550px;">
+                            <pre>
+                                <code>
+                                    <xmp>int buzzer = 8;//initialize digital IO pin that controls the buzzer
+
+void setup() 
+{
+    pinMode(buzzer, OUTPUT);// set pin mode as "output"
+}
+                                        
+void loop() 
+{
+    digitalWrite(buzzer, HIGH);// produce sound
+}
+                                    </xmp>
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Output</h1>
+                        <p>The Buzzer is activated using an Arduino Board.</p>
+                        <video controls loop class="video">
+                            <source src="output videos/exp05.mp4" >
+                        </video>
+                    </div>
+                </div>
+
+                <!--experiment 06-->
+                <div class="accordion-item" id="exp6">
+                    <a class="accordion-link" href="#exp6">
+                        Experiment 06: RGB LED
+                        <ion-icon name="chevron-up-outline" class="up"></ion-icon>
+                        <ion-icon name="chevron-down-outline" class="down"></ion-icon>
+                    </a>
+                    <div class="expdetails">
+                        <h1>Aim</h1>
+                        <p>In this experiment we will learn interfacing RGB LED with Arduino.</p>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Components Required</h1>
+                        <ul type = circle>
+                            <li>Arduino UNO board</li>
+                            <li>RGB LED x 1 Nos</li>
+                            <li>220Ω resistor x 3 Nos</li>
+                            <li>Breadboard</li>
+                            <li>Jumper wires (Male to Male) x 5 Nos</li>
+                            <li>USB cable</li>
+                        </ul>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Theory</h1>
+                        <p><span>RGB LED</span><br><br>The RGB led consists of three different led’s, from the name you can guess that these led’s are red, green and blue. We can obtain many other colors by mixing up these colors. The Arduino has a analog write function which will help us in obtaining different colors for Arduino RGB led.</p>
+                        <img src="images/rgb1.jpg" alt="">
+                        <p>You cannot distinguish between the common cathode and common anode type by just looking at the RGB led because both look same. You will have to make the connections to see that either it is common cathode or common anode.<br><br>The RGB led has one big lead than the other leads. In the common cathode case, it will be connected to GND and in the common anode case; it will be connected to 5V.</p>
+                        <img src="images/rgb.PNG" alt="">
+                    </div>
+                    <div class="expdetails">
+                        <h1>Circuit Diagram</h1>
+                        <img src="circuit images/circuit6.PNG" alt="circuit6">
+                    </div>
+                    <div class="expdetails">
+                        <h1>Code</h1>
+                        <div class="code" style="overflow: auto; height: 550px;">
+                            <pre>
+                                <code>
+                                    <xmp>int redpin = 11;//select the pin for the red LED
+int greenpin = 10;// select the pin for the green LED
+int bluepin = 9; // select the pin for the blue LED
+int val;
+                                        
+void setup() 
+{
+    pinMode(redpin, OUTPUT);
+    pinMode(greenpin, OUTPUT);
+    pinMode(bluepin, OUTPUT);
+    Serial.begin(9600);
+}
+                                        
+void loop() 
+{
+    for(val=255; val>=0; val--)
+    {
+        analogWrite(11, val);
+        analogWrite(10, 255-val);
+        analogWrite(9, 128-val);
+        delay(5);    
+    }
+    for(val=0; val<=255; val++)
+    {
+        analogWrite(11, val);
+        analogWrite(10, 255-val);
+        analogWrite(9, 128-val);
+        delay(5);
+    }
+    Serial.println(val, DEC);
+}
+                                    </xmp>
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Output</h1>
+                        <p>Different coloured lights were produced using RGB LED and Arduino.</p>
+                        <video controls loop class="video">
+                            <source src="output videos/exp06.mp4" >
+                        </video>
+                    </div>
+                </div>
+
+                <!--experiment 07-->
+                <div class="accordion-item" id="exp7">
+                    <a class="accordion-link" href="#exp7">
+                        Experiment 07:  LDR Light Sensor
+                        <ion-icon name="chevron-up-outline" class="up"></ion-icon>
+                        <ion-icon name="chevron-down-outline" class="down"></ion-icon>
+                    </a>
+                    <div class="expdetails">
+                        <h1>Aim</h1>
+                        <p>In this experiment we will use LDR light sensor to increase the intensity of LED whenever the intensity of external light decreases and vice-versa. Wouldn’t it be really cool if whenever a room gets dark, a light bulb automatically turns ON and eliminates the darkness?</p>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Components Required</h1>
+                        <ul type = circle>
+                            <li>Arduino UNO board</li>
+                            <li>LDR light sensor x 1 Nos</li>
+                            <li>Red M5 LED x 1 Nos</li>
+                            <li>10KΩ Resistor x 1 Nos</li>
+                            <li>220Ω Resistor x 1 Nos</li>
+                            <li>Breadboard</li>
+                            <li>Jumper wires (Male to Male) x 5 Nos</li>
+                            <li>USB cable</li>
+                        </ul>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Theory</h1>
+                        <p><span>LDR Light Sensor</span><br><br>LDR ( light dependent resistor ) also called photoresistors are responsive to light. Photoresistors are used to indicate the intensity or the presence or the absence of light. When there is darkness the resistance of photoresistor increases and when there is sufficient light it dramatically decreases.</p>
+                        <img src="images/ldr.PNG" alt="">
+                        <p>LDR ( light dependent resistor ) has two terminals. Terminal one is the signal pin which should be connected according to the code. Another terminal is considered as the ground pin which should be connected to the ground of the system.</p>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Circuit Diagram</h1>
+                        <img src="circuit images/circuit7.PNG" alt="circuit7">
+                    </div>
+                    <div class="expdetails">
+                        <h1>Code</h1>
+                        <div class="code" style="overflow: auto; height: 550px;">
+                            <pre>
+                                <code>
+                                    <xmp>int potpin = 0;// initialize analog pin 0, connected with photovaristor
+int ledpin = 11;// initialize digital pin 11
+int val = 0;// initialize variable val
+                                        
+void setup() 
+{
+    pinMode(ledpin, OUTPUT);// set digital pin 11 as “output”
+    Serial.begin(9600);// set baud rate at “9600”
+}
+                                        
+void loop() 
+{
+    val = analogRead(potpin);// read the value of the sensor and assign it to val
+    Serial.println(val);// display the value of val
+    analogWrite(ledpin, val/4);// set up brightness（maximum value 255）
+    delay(10);// wait for 0.01
+}
+                                    </xmp>
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Output</h1>
+                        <p>When the intensity of external light increases, the intensity of LED decreases and vice-versa. It was done using LDR Light Sensor.</p>
+                        <video controls loop class="video">
+                            <source src="output videos/exp07.mp4" >
+                        </video>
+                    </div>
+                </div>
+
+                <!--experiment 08-->
+                <div class="accordion-item" id="exp8">
+                    <a class="accordion-link" href="#exp8">
+                        Experiment 08:  Flame Sensor
+                        <ion-icon name="chevron-up-outline" class="up"></ion-icon>
+                        <ion-icon name="chevron-down-outline" class="down"></ion-icon>
+                    </a>
+                    <div class="expdetails">
+                        <h1>Aim</h1>
+                        <p>In this experiment we will use IR receiver to detect flame and if detected turns buzzer on.</p>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Components Required</h1>
+                        <ul type = circle>
+                            <li>Arduino UNO board</li>
+                            <li>Flame Sensor x 1 Nos</li>
+                            <li>Buzzer x 1 Nos</li>
+                            <li>10KΩ Resistor x 1 Nos</li>
+                            <li>Breadboard</li>
+                            <li>Jumper wires (Male to Male) x 7 Nos</li>
+                            <li>Jumper wires (Male to Female) x 3 Nos</li>
+                            <li>USB cable</li>
+                        </ul>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Theory</h1>
+                        <p><span>IR Receiver LED</span><br><br> It does not emit any light but detects the presence of light. This diode allows some current to pass through it after detecting light and the amount of current flow is directly proportional to the amount of light detected, so it is called IR receiver and makes a pair with IR transmitter.</p>
+                        <img src="images/irtransmitter.PNG" alt="">
+                        <p><span>Flame Sensor</span><br><br>A flame sensor module that consists of a flame sensor (IR receiver), resistor, capacitor, potentiometer, and comparator LM393 in an integrated circuit. It can detect infrared light with a wavelength ranging from 700nm to 1000nm.The far-infrared flame probe converts the light detected in the form of infrared light into current changes. Sensitivity is adjusted through the onboard variable resistor with a detection angle of 60 degrees.</p>
+                        <img src="images/flamesensor.PNG" alt="">
+                    </div>
+                    <div class="expdetails">
+                        <h1>Circuit Diagram</h1>
+                        <img src="circuit images/circuit8.PNG" alt="circuit8">
+                    </div>
+                    <div class="expdetails">
+                        <h1>Connection</h1>
+                        <p>Since the IR receiver LED was not available with me I used the flame sensor to do this experiment. There were no changes in the connection given in the circuit diagram except the analog pin A0 was connected to the DO pin of Flame Sensor.</p>
+                        <img src="circuit images/connection.jpeg" alt="" height="550" width="1100">
+                    </div>
+                    <div class="expdetails">
+                        <h1>Code</h1>
+                        <div class="code" style="overflow: auto; height: 550px;">
+                            <pre>
+                                <code>
+                                    <xmp>int flame=0;// select analog pin 0 for the sensor
+int Beep=9;// select digital pin 9 for the buzzer
+int val=0;// initialize variable
+                                        
+void setup() 
+{
+    pinMode(Beep,OUTPUT);// set LED pin as “output”
+    pinMode(flame,INPUT);// set buzzer pin as “input”
+    Serial.begin(9600);// set baud rate at “9600”
+} 
+                                        
+void loop() 
+{ 
+    val=analogRead(flame);// read the analog value of the sensor 
+    Serial.println(val);// output and display the analog value
+    if(val<=600)// when the analog value is smaller than 600, the buzzer will buzz
+    {  
+        digitalWrite(Beep,HIGH); 
+    }
+    else 
+    {  
+        digitalWrite(Beep,LOW); 
+    }
+    delay(500); 
+}
+                                    </xmp>
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Output</h1>
+                        <p>The buzzer beeped whenever the flame was detected by flame sensor.</p>
+                        <video controls loop class="video">
+                            <source src="output videos/exp08.mp4" >
+                        </video>
+                        <p>Serial Monitor:</p>
+                        <img src="circuit images/serial1.PNG" alt="" >
+                    </div>
+                </div>
+
+                <!--experiment 09-->
+                <div class="accordion-item" id="exp9">
+                    <a class="accordion-link" href="#exp9">
+                        Experiment 09:  LM35 Temperature Sensor
+                        <ion-icon name="chevron-up-outline" class="up"></ion-icon>
+                        <ion-icon name="chevron-down-outline" class="down"></ion-icon>
+                    </a>
+                    <div class="expdetails">
+                        <h1>Aim</h1>
+                        <p>This experiment is a simple experiment which can be use as a thermometer. It can sense the temperature it is put around and transmit it to degrees Celsius.</p>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Components Required</h1>
+                        <ul type = circle>
+                            <li>Arduino UNO board</li>
+                            <li>LM35 x 1 Nos</li>
+                            <li>Breadboard</li>
+                            <li>Jumper wires (Male to Male) x 5 Nos</li>
+                            <li>USB cable</li>
+                        </ul>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Theory</h1>
+                        <p><span>LM35</span><br><br>LM35 is a widely used temperature sensor with many different package types. At room temperature, it can achieve the accuracy of ±1/4°C without additional calibration processing.</p>
+                        <img src="images/lm35.PNG" alt="">
+                        <p>LM35 temperature sensor can produce different voltage by different temperature. When temperature is 0 ℃, it outputs 0V; if increasing 1 ℃, the output voltage will increase 10 mV. The output temperature is 0℃～100℃, the conversion formula is as follows:</p>
+                        <img src="images/tempformula.PNG" alt="">
+                    </div>
+                    <div class="expdetails">
+                        <h1>Circuit Diagram</h1>
+                        <img src="circuit images/circuit9.PNG" alt="circuit9">
+                    </div>
+                    
+                    <div class="expdetails">
+                        <h1>Code</h1>
+                        <div class="code" style="overflow: auto; height: 550px;">
+                            <pre>
+                                <code>
+                                    <xmp>int potpin = 0;// initialize analog pin 0 for LM35 temperature sensor
+
+void setup() 
+{
+    Serial.begin(9600);// set baud rate at”9600”
+}
+                                       
+void loop() 
+{
+    int val;// define variable
+    int dat;// define variable
+    val = analogRead(potpin);// read the analog value of the sensor and assign it to val
+    dat = (125*val)>>8;// temperature calculation formula
+    Serial.print("Tep");// output and display characters beginning with Tep
+    Serial.print(dat);// output and display value of dat
+    Serial.println("C");// display “C” characters
+    delay(500);// wait for 0.5 second
+}
+                                    </xmp>
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Output</h1>
+                        <p>The temperature of the surrounding is sensed and displayed on Serial Monitor.</p>
+                        <video controls loop class="video">
+                            <source src="output videos/exp09.mp4" >
+                        </video>
+                        <p>Serial Monitor:</p>
+                        <img src="circuit images/serial2.PNG" alt="" >
+                    </div>
+                </div>
+
+                <!--experiment 10-->
+                <div class="accordion-item" id="exp10">
+                    <a class="accordion-link" href="#exp10">
+                        Experiment 10:  IR Remote Control Using TSOP
+                        <ion-icon name="chevron-up-outline" class="up"></ion-icon>
+                        <ion-icon name="chevron-down-outline" class="down"></ion-icon>
+                    </a>
+                    <div class="expdetails">
+                        <h1>Aim</h1>
+                        <p>In this experiment we will try to on and off different LEDs using an IR Remote Controller.</p>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Components Required</h1>
+                        <ul type = circle>
+                            <li>Arduino UNO board</li>
+                            <li>Infrared Remote Controller(You can use TV Remote or any other remote) x 1 Nos</li>
+                            <li>Infrared Receiver x 1 Nos</li>
+                            <li>LED x 6 Nos</li>
+                            <li>220Ω Resistor x 6 Nos</li>
+                            <li>Breadboard</li>
+                            <li>Jumper wires (Male to Male) x 11 Nos</li>
+                            <li>USB cable</li>
+                        </ul>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Theory</h1>
+                        <p><span>TSOP - IR Receiver Module</span><br><br>The signal from the infrared remote controller is a series of binary pulse code. To avoid the other infrared signal interference during the wireless transmission, the signal is pre-modulated at a specific carrier frequency and then send out by an infrared emission diode. The infrared receiving device needs to filter out other waves and receive signals at that specific frequency and to modulate it back to binary pulse code, known as demodulation.</p>
+                        <img src="images/tsop.PNG" alt="">
+                        <p>The built-in receiver converts the light signal it received from the sender into feeble electrical signal. The signal will be amplified by the IC amplifier. After automatic gain control, band-pass filtering, demodulation, wave shaping, it returns to the original code. The code is then input to the code identification circuit by the receiver's signal output pin.</p>
+                        <img src="images/remote.PNG" alt="">
+                    </div>
+                    <div class="expdetails">
+                        <h1>Circuit Diagram</h1>
+                        <img src="circuit images/circuit10.PNG" alt="circuit10">
+                    </div>
+                    
+                    <div class="expdetails">
+                        <h1>Code</h1>
+                        <p>We need to install a library called “IRRemote”. You can get it from <a href="https//github.com/shirriff/Arduino-IRremote">GitHub</a> or you can install it directly from the Library Manager in your Arduino IDE.<br><br>We need to capture the unique codes sent when each button of the remote is pressed. We’ll use the serial monitor to display them.</p>
+                        <div class="code" style="overflow: auto; height: 550px;">
+                            <pre>
+                                <code>
+                                    <xmp>#include <IRremote.h>
+int RECV_PIN = 11;
+                                        
+IRrecv irrecv(RECV_PIN);
+decode_results results; 
+                                        
+void setup()
+{
+    pinMode(RECV_PIN, INPUT);   
+    Serial.begin(9600);
+    irrecv.enableIRIn(); // Start the receiver
+}
+                                        
+void loop() 
+{
+    if (irrecv.decode(&results)) 
+    {
+        Serial.println(results.value, HEX); 
+        irrecv.resume(); // Receive the next value
+    }
+}
+                                    </xmp>
+                                </code>
+                            </pre>
+                        </div>
+                        <p>After getting the unique code for each button, we can perform the given experiment.</p>
+                        <div class="code" style="overflow: auto; height: 550px;">
+                            <pre>
+                                <code>
+                                    <xmp>#include <IRremote.h>// IR Remote Library
+
+int RECV_PIN = 11;// initialize the digital pin 11 where you connect output pin of TSOP1838
+int LED1 = 2;// initialize digital pin 2
+int LED2 = 3;// initialize digital pin 3
+int LED3 = 4;// initialize digital pin 4
+int LED4 = 5;// initialize digital pin 5
+int LED5 = 6;// initialize digital pin 6
+int LED6 = 7;// initialize digital pin 7
+int LEDon[] = {0, 0, 0, 0, 0, 0};// the initial state of LEDs is OFF (zero)
+                                        
+long btn1 = 0x001FE50AF;// code from button 1
+long btn2 = 0x001FED827;// code from button 2
+long btn3 = 0x001FEF807;// code from button 3
+long btn4 = 0x001FE30CF;// code from button 4
+long btn5 = 0x001FEB04F;// code from button 5
+long btn6 = 0x001FE708F;// code from button 6
+                                        
+IRrecv irrecv(RECV_PIN);// define IR Receiver
+decode_results results;// results objects
+                                       
+void dump(decode_results *results) 
+{
+    int count = results->rawlen;
+    if (results->decode_type == UNKNOWN) 
+    {
+        Serial.println("Could not decode message");
+    } 
+    else 
+    {
+        if (results->decode_type == NEC) 
+        {
+            Serial.print("Decoded NEC: ");
+        } 
+        else if (results->decode_type == SONY) 
+        {
+            Serial.print("Decoded SONY: ");
+        } 
+        else if (results->decode_type == RC5) 
+        {
+            Serial.print("Decoded RC5: ");
+        } 
+        else if (results->decode_type == RC6) 
+        {
+            Serial.print("Decoded RC6: ");
+        }
+        Serial.print(results->value, HEX);
+        Serial.print(" (");
+        Serial.print(results->bits, DEC);
+        Serial.println(" bits)");
+    }
+                                         
+    Serial.print("Raw (");
+    Serial.print(count, DEC);
+    Serial.print("): ");
+                                            
+    for (int i=0; i<count; i++) 
+    {
+        if ((i%2)== 1) 
+        {
+            Serial.print(results->rawbuf[i]*USECPERTICK, DEC);
+        } 
+        else  
+        {
+            Serial.print(-(int)results->rawbuf[i]*USECPERTICK, DEC);
+        }
+        Serial.print(" ");
+    }
+                                            
+    Serial.println("");
+}
+                                        
+void setup()
+{
+    pinMode(RECV_PIN, INPUT);   
+    pinMode(LED1, OUTPUT);
+    pinMode(LED2, OUTPUT);
+    pinMode(LED3, OUTPUT);
+    pinMode(LED4, OUTPUT);
+    pinMode(LED5, OUTPUT);
+    pinMode(LED6, OUTPUT);  
+    pinMode(13, OUTPUT);
+    Serial.begin(9600);
+    irrecv.enableIRIn(); // Start the receiver
+}
+                                        
+int on = 0;
+unsigned long last = millis();
+                                        
+void loop() 
+{
+    if (irrecv.decode(&results))
+    {
+        // If it's been at least 1/4 second since the last
+        // IR received, toggle the relay
+        if (millis() - last > 250) 
+        {
+            on=!on;
+            digitalWrite(8,on?HIGH:LOW);
+            digitalWrite(13,on?HIGH:LOW);
+            dump(&results);
+        }
+        if(results.value==btn1)
+        {
+            if(LEDon[0] == 1)// if first led is on then 
+            {        
+                digitalWrite(LED1, LOW);// turn it off when button is pressed
+                LEDon[0] = 0;// and set its state as off
+            } 
+            else// else if first led is off
+            {                      
+                digitalWrite(LED1, HIGH); // turn it on when the button is pressed
+                LEDon[0] = 1;// and set its state as on
+            }
+        }
+        if(results.value==btn2)
+        {
+            if(LEDon[1] == 1)// if second led is on then 
+            {        
+                digitalWrite(LED2, LOW);// turn it off when button is pressed
+                LEDon[1] = 0;// and set its state as off
+            } 
+            else// else if second led is off
+            {                      
+                digitalWrite(LED2, HIGH); // turn it on when the button is pressed
+                LEDon[1] = 1;// and set its state as on
+            }
+        }
+        if(results.value==btn3)
+        {
+            if(LEDon[2] == 1)// if third led is on then 
+            {        
+                digitalWrite(LED3, LOW);// turn it off when button is pressed
+                LEDon[2] = 0;// and set its state as off
+            } 
+            else// else if third led is off
+            {                      
+                digitalWrite(LED3, HIGH); // turn it on when the button is pressed
+                LEDon[2] = 1;// and set its state as on
+            }
+        }
+        if(results.value==btn4)
+        {
+            if(LEDon[3] == 1)// if fourth led is on then 
+            {        
+                digitalWrite(LED4, LOW);// turn it off when button is pressed
+                LEDon[3] = 0;// and set its state as off
+            } 
+            else// else if fourth led is off
+            {                      
+                digitalWrite(LED4, HIGH); // turn it on when the button is pressed
+                LEDon[3] = 1;// and set its state as on
+            }
+        }
+        if(results.value==btn5)
+        {
+            if(LEDon[4] == 1)// if fifth led is on then 
+            {        
+                digitalWrite(LED5, LOW);// turn it off when button is pressed
+                LEDon[4] = 0;// and set its state as off
+            } 
+            else// else if fifth led is off
+            {                      
+                digitalWrite(LED5, HIGH); // turn it on when the button is pressed
+                LEDon[4] = 1;// and set its state as on
+            }
+        }
+        if(results.value==btn6)
+        {
+            if(LEDon[5] == 1)// if sixth led is on then 
+            {        
+                digitalWrite(LED6, LOW);// turn it off when button is pressed
+                LEDon[5] = 0;// and set its state as off
+            } 
+            else// else if sixth led is off
+            {                      
+                digitalWrite(LED6, HIGH); // turn it on when the button is pressed
+                LEDon[5] = 1;// and set its state as on
+            }
+        }
+                                                        
+        last = millis();      
+        irrecv.resume(); // Receive the next value
+    }
+}
+                                    </xmp>
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Output</h1>
+                        <p>Initially all the LEDs are in OFF state. When button 1 is pressed, first LED turns ON and if button 1 is pressed again, the first LED turns OFF. The same goes for all other LEDs.</p>
+                        <video controls loop class="video">
+                            <source src="output videos/exp10.mp4" >
+                        </video>
+                        <p>Serial Monitor:</p>
+                        <img src="circuit images/serial3.PNG" alt="" >
+                    </div>
+                </div>
+
+                <!--experiment 11-->
+                <div class="accordion-item" id="exp11">
+                    <a class="accordion-link" href="#exp11">
+                        Experiment 11:  Potentiometer analog Value Reading
+                        <ion-icon name="chevron-up-outline" class="up"></ion-icon>
+                        <ion-icon name="chevron-down-outline" class="down"></ion-icon>
+                    </a>
+                    <div class="expdetails">
+                        <h1>Aim</h1>
+                        <p>In this experiment we are reading value (Analog Value) from a Potentiometer</p>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Components Required</h1>
+                        <ul type = circle>
+                            <li>Arduino UNO board</li>
+                            <li>10K Potentiometer x 1 Nos</li>
+                            <li>Breadboard</li>
+                            <li>Jumper wires (Male to Male) x 3 Nos</li>
+                            <li>Jumper wires (Male to Female) x 3 Nos</li>
+                            <li>USB cable</li>
+                        </ul>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Theory</h1>
+                        <p><span>Potentiometer</span><br><br>A potentiometer is a simple mechanical device that provides a varying amount of resistance when its shaft is turned. By passing voltage through a potentiometer and into an analog input on your board, it is possible to measure the amount of resistance produced by a potentiometer (or pot for short) as an analog value.</p>
+                        <img src="images/potentiometer.PNG" alt="">
+                    </div>
+                    <div class="expdetails">
+                        <h1>Circuit Diagram</h1>
+                        <img src="circuit images/circuit11.PNG" alt="circuit11">
+                    </div>
+                    
+                    <div class="expdetails">
+                        <h1>Code</h1>
+                        <div class="code" style="overflow: auto; height: 550px;">
+                            <pre>
+                                <code>
+                                    <xmp>int potpin = 0;// initialize analog pin 0
+int ledpin = 13;// initialize digital pin 13
+int val = 0;// define val, assign initial value 0
+                                        
+void setup() 
+{
+    pinMode(ledpin, OUTPUT);// set digital pin as “output”
+    Serial.begin(9600);// set baud rate at 9600
+}
+                                        
+void loop() 
+{
+    digitalWrite(ledpin, HIGH);// turn on the LED on pin 13
+    delay(50);// wait for 0.05 second
+    digitalWrite(ledpin, LOW);// turn off the LED on pin 13
+    delay(50);// wait for 0.05 second
+    val = analogRead(potpin);// read the analog value of analog pin 0, and assign it to val 
+    Serial.println(val);// display val’s value
+}
+                                    </xmp>
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Output</h1>
+                        <p>The analog values read from potentiometer is displayed on Serial Monitor.</p>
+                        <video controls loop class="video">
+                            <source src="output videos/exp11.mp4" >
+                        </video>
+                        <p>Serial Monitor:</p>
+                        <img src="circuit images/serial4.PNG" alt="" >
+                    </div>
+                </div>
+
+                <!--experiment 12-->
+                <div class="accordion-item" id="exp12">
+                    <a class="accordion-link" href="#exp12">
+                        Experiment 12:  7 Segment Display
+                        <ion-icon name="chevron-up-outline" class="up"></ion-icon>
+                        <ion-icon name="chevron-down-outline" class="down"></ion-icon>
+                    </a>
+                    <div class="expdetails">
+                        <h1>Aim</h1>
+                        <p>In this experiment we will display numbers from 0 to 9 on a 7 Segment Display with a delay of 1 second each.</p>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Components Required</h1>
+                        <ul type = circle>
+                            <li>Arduino UNO board</li>
+                            <li>1-digit LED Segment Display x 1 Nos</li>
+                            <li>220Ω Resistor x 8 Nos</li>
+                            <li>Breadboard</li>
+                            <li>Jumper wires (Male to Male) x several Nos</li>
+                            <li>USB cable</li>
+                        </ul>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Theory</h1>
+                        <p><span>LED Segment Display</span><br><br>LED segment display is a semiconductor light-emitting device. Its basic unit is a light-emitting diode (LED). LED segment display can be divided into 7-segment display and 8-segment display according to the number of segments. 8-segment display has one more LED unit ( for decimal point display) than 7-segment one.</p>
+                        <img src="images/segmentdisplay.PNG" alt="">
+                    </div>
+                    <div class="expdetails">
+                        <h1>Circuit Diagram</h1>
+                        <img src="circuit images/circuit12.PNG" alt="circuit12">
+                    </div>
+                    
+                    <div class="expdetails">
+                        <h1>Code</h1>
+                        <div class="code" style="overflow: auto; height: 550px;">
+                            <pre>
+                                <code>
+                                    <xmp>int a = 7;// set digital pin 7 for segment a
+int b = 6;// set digital pin 6 for segment b
+int c = 5;// set digital pin 5 for segment c
+int d = 10;// set digital pin 10 for segment d
+int e = 11;// set digital pin 11 for segment e
+int f = 8;// set digital pin 8 for segment f
+int g = 9;// set digital pin 9 for segment g
+int dp = 4;// set digital pin 4 for segment dp
+                                        
+void digital_0() // display number 0
+{
+    digitalWrite(a,LOW);
+    digitalWrite(b,LOW);
+    digitalWrite(c,LOW);
+    digitalWrite(d,LOW);
+    digitalWrite(e,LOW);
+    digitalWrite(f,LOW);
+    digitalWrite(g,HIGH);
+    digitalWrite(dp,HIGH);
+}
+                                       
+void digital_1() // display number 1
+{
+    digitalWrite(c,LOW);// set level as “high” for pin 5, turn on segment c
+    digitalWrite(b,LOW);// turn on segment b
+    for(int j=7;j<=11;j++)// turn off other segments
+    {
+        digitalWrite(j,HIGH);
+    }
+    digitalWrite(dp,HIGH);// turn off segment dp
+}
+                                    
+void digital_2() // display number 2
+{
+    digitalWrite(b,LOW);
+    digitalWrite(a,LOW);
+    for(int j=9;j<=11;j++)
+    {
+        digitalWrite(j,LOW);
+    }
+    digitalWrite(dp,HIGH);
+    digitalWrite(c,HIGH);
+    digitalWrite(f,HIGH);
+}
+                                        
+void digital_3() // display number 3
+{
+    digitalWrite(g,LOW);
+    digitalWrite(a,LOW);
+    digitalWrite(b,LOW);
+    digitalWrite(c,LOW);
+    digitalWrite(d,LOW);
+    digitalWrite(dp,HIGH);
+    digitalWrite(f,HIGH);
+    digitalWrite(e,HIGH);
+}
+                                        
+void digital_4() // display number 4
+{
+    digitalWrite(c,LOW);
+    digitalWrite(b,LOW);
+    digitalWrite(f,LOW);
+    digitalWrite(g,LOW);
+    digitalWrite(dp,HIGH);
+    digitalWrite(a,HIGH);
+    digitalWrite(e,HIGH);
+    digitalWrite(d,HIGH);
+}
+                                       
+void digital_5() // display number 5
+{
+    digitalWrite(a,LOW);
+    digitalWrite(b, HIGH);
+    digitalWrite(c,LOW);
+    digitalWrite(d,LOW);
+    digitalWrite(e, HIGH);
+    digitalWrite(f,LOW);
+    digitalWrite(g,LOW);
+    digitalWrite(dp,HIGH);
+}
+                                        
+void digital_6() // display number 6
+{
+    for(int j=7;j<=11;j++)
+    {
+        digitalWrite(j,LOW);
+    }
+    digitalWrite(c,LOW);
+    digitalWrite(dp,HIGH);
+    digitalWrite(b,HIGH);
+}
+                                        
+void digital_7() // display number 7
+{
+    for(int j=5;j<=7;j++)
+    {
+        digitalWrite(j,LOW);
+    }
+    digitalWrite(dp,HIGH);
+    for(int j=8;j<=11;j++)
+    {
+        digitalWrite(j,HIGH);
+    }
+}
+                                       
+void digital_8() // display number 8
+{
+    for(int j=5;j<=11;j++)
+    {
+        digitalWrite(j,LOW);
+    }
+    digitalWrite(dp,HIGH);
+}
+                                        
+void digital_9() // display number 9
+{
+    digitalWrite(a,LOW);
+    digitalWrite(b,LOW);
+    digitalWrite(c,LOW);
+    digitalWrite(d,LOW);
+    digitalWrite(e, HIGH);
+    digitalWrite(f,LOW);
+    digitalWrite(g,LOW);
+    digitalWrite(dp,HIGH);
+}
+                                        
+void setup() 
+{
+    int i;// set variable
+    for(i=4;i<=11;i++)
+    {
+        pinMode(i,OUTPUT);// set pin 4-11as “output”
+    }
+                                        
+}
+                                        
+void loop() 
+{
+    digital_0();// display number 0
+    delay(1000);// wait for 1s
+    digital_1();// display number 1
+    delay(1000);// wait for 1s
+    digital_2();// display number 2
+    delay(1000); // wait for 1s
+    digital_3();// display number 3
+    delay(1000); // wait for 1s
+    digital_4();// display number 4
+    delay(1000); // wait for 1s
+    digital_5();// display number 5
+    delay(1000); // wait for 1s
+    digital_6();// display number 6
+    delay(1000); // wait for 1s
+    digital_7();// display number 7
+    delay(1000); // wait for 1s
+    digital_8();// display number 8
+    delay(1000); // wait for 1s
+    digital_9();// display number 9
+    delay(1000); // wait for 1s
+                                       
+                                          
+}
+                                    </xmp>
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="expdetails">
+                        <h1>Output</h1>
+                        <p>The 7 Segment Display displays numbers from 0 to 9 with a time interval of 1 second.</p>
+                        <video controls loop class="video">
+                            <source src="output videos/exp12.mp4" >
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </section>
+
+    <!--experiments ends-->
+
+    <!--assignments begins-->
+    <section class="assignment" id="assignment">
+        <h1 class="heading"><span>assign</span>ments!!</h1>
+        
+        <div class="assignments">
+            <div class="accordion">
+
+                <!--assignment 01-->
+                <div class="accordion-item" id="assign1">
+                    <a class="accordion-link" href="#assign1">
+                        Digital Dice using 7 Segment Display and Push Button
+                        <ion-icon name="chevron-up-outline" class="up"></ion-icon>
+                        <ion-icon name="chevron-down-outline" class="down"></ion-icon>
+                    </a>
+                    <div class="assigndetails">
+                        <h1>Aim</h1>
+                        <p>To create a digital dice using 7 Segment Display and a push button.</p>
+                    </div>
+                    <div class="assigndetails">
+                        <h1>Components Required</h1>
+                        
+                            <ul type= circle>
+                                <li>Arduino UNO board</li>
+                                <li>1-digit LED Segment Display x 1 Nos</li>
+                                <li>Push Button x 1 Nos</li>
+                                <li>220Ω Resistor x 8 Nos</li>
+                                <li>10KΩ Resistor x 1 Nos</li>
+                                <li>Breadboard</li>
+                                <li>Jumper wires (Male to Male) x several Nos</li>
+                                <li>USB cable</li>
+                            </ul>
+                        
+                    </div>
+                    <div class="assigndetails">
+                        <h1>Circuit Diagram</h1>
+                        <img src="circuit images/assign1.PNG" alt="assigncircuit1">
+                    </div>
+                    <div class="assigndetails">
+                        <h1>Code</h1>
+                        <div class="code" style="overflow: auto; height: 550px;">
+                            <pre>
+                                <code>
+                                    <xmp>int a = 7;// set digital pin 7 for segment a
+int b = 6;// set digital pin 6 for segment b
+int c = 5;// set digital pin 5 for segment c
+int d = 10;// set digital pin 10 for segment d
+int e = 11;// set digital pin 11 for segment e
+int f = 8;// set digital pin 8 for segment f
+int g = 9;// set digital pin 9 for segment g
+int dp = 4;// set digital pin 4 for segment dp
+int btnpin = 2;//set digital pin 2 for push button
+int val;// define val
+                                   
+void digital_1() // display number 1
+{
+    digitalWrite(c,LOW);// set level as “high” for pin 5, turn on segment c
+    digitalWrite(b,LOW);// turn on segment b
+    for(int j=7;j<=11;j++)// turn off other segments
+    {
+        digitalWrite(j,HIGH);
+    }
+    digitalWrite(dp,HIGH);// turn off segment dp
+}
+                                        
+void digital_2() // display number 2
+{
+    digitalWrite(b,LOW);
+    digitalWrite(a,LOW);
+    for(int j=9;j<=11;j++)
+    {
+        digitalWrite(j,LOW);
+    }
+    digitalWrite(dp,HIGH);
+    digitalWrite(c,HIGH);
+    digitalWrite(f,HIGH);
+}
+                                        
+void digital_3() // display number 3
+{
+    digitalWrite(g,LOW);
+    digitalWrite(a,LOW);
+    digitalWrite(b,LOW);
+    digitalWrite(c,LOW);
+    digitalWrite(d,LOW);
+    digitalWrite(dp,HIGH);
+    digitalWrite(f,HIGH);
+    digitalWrite(e,HIGH);
+}
+                                        
+void digital_4() // display number 4
+{
+    digitalWrite(c,LOW);
+    digitalWrite(b,LOW);
+    digitalWrite(f,LOW);
+    digitalWrite(g,LOW);
+    digitalWrite(dp,HIGH);
+    digitalWrite(a,HIGH);
+    digitalWrite(e,HIGH);
+    digitalWrite(d,HIGH);
+}
+                                       
+void digital_5() // display number 5
+{
+    digitalWrite(a,LOW);
+    digitalWrite(b, HIGH);
+    digitalWrite(c,LOW);
+    digitalWrite(d,LOW);
+    digitalWrite(e, HIGH);
+    digitalWrite(f,LOW);
+    digitalWrite(g,LOW);
+    digitalWrite(dp,HIGH);
+}
+                                        
+void digital_6() // display number 6
+{
+    for(int j=7;j<=11;j++)
+    {
+        digitalWrite(j,LOW);
+    }
+    digitalWrite(c,LOW);
+    digitalWrite(dp,HIGH);
+    digitalWrite(b,HIGH);
+}
+                                        
+void setup() 
+{
+    int i;// set variable
+    for(i=4;i<=11;i++)
+    {
+        pinMode(i,OUTPUT);// set pin 4-11as “output”
+    }
+    pinMode(btnpin, INPUT);   
+}
+                                        
+void loop() 
+{
+    val = digitalRead(btnpin);// read the value of pin 2 and assign it to val
+                                       
+    /*when the button is pressed, the 7 segment display displays
+    random numbers from 1 to 6 and when it is released, it displays a random number.
+    */
+    if(val == HIGH)
+    {
+        switch(random(1,7))
+        {
+            case 1:
+            digital_1();
+            delay(100);
+            break;
+ 
+            case 2:
+            digital_2();
+            delay(100);
+            break;
+
+            case 3:
+            digital_3();
+            delay(100);
+            break;
+
+            case 4:
+            digital_4();
+            delay(100);
+            break;
+
+            case 5:
+            digital_5();
+            delay(100);
+            break;
+
+            case 6:
+            digital_6();
+            delay(100);
+            break;
+        }
+    }                                      
+}
+                                    </xmp>
+                                </code>
+                            </pre>
+                        </div>
+                        <p><span>Note:</span> Arduino always measures the time duration in millisecond. Therefore, whenever you mention the delay, keep it in milli seconds.</p>
+                    </div>
+                    <div class="assigndetails">
+                        <h1>Output</h1>
+                        <p>Digital Dice using 7 Segment Display and Push Button is created.</p>
+                        <video controls loop class="video">
+                            <source src="output videos/assign01.mp4" >
+                        </video> 
+                    </div>
+                </div>
+
+                <!--assignment 02-->
+                <div class="accordion-item" id="assign2">
+                    <a class="accordion-link" href="#assign2">
+                        Automatic Night Lamp Model using LDR and LED
+                        <ion-icon name="chevron-up-outline" class="up"></ion-icon>
+                        <ion-icon name="chevron-down-outline" class="down"></ion-icon>
+                    </a>
+                    <div class="assigndetails">
+                        <h1>Aim</h1>
+                        <p>To create an Automatic Night Lamp using LDR and LED.</p>
+                    </div>
+                    <div class="assigndetails">
+                        <h1>Components Required</h1>
+                        <ul type = circle>
+                            <li>Arduino UNO board</li>
+                            <li>LDR light sensor x 1 Nos</li>
+                            <li>LED x 1 Nos</li>
+                            <li>10KΩ Resistor x 1 Nos</li>
+                            <li>220Ω Resistor x 1 Nos</li>
+                            <li>Breadboard</li>
+                            <li>Jumper wires (Male to Male) x 5 Nos</li>
+                            <li>USB cable</li>
+                        </ul>
+                    </div>
+                    <div class="assigndetails">
+                        <h1>Circuit Diagram</h1>
+                        <img src="circuit images/circuit7.PNG" alt="circuit7">
+                    </div>
+                    <div class="assigndetails">
+                        <h1>Code</h1>
+                        <div class="code" style="overflow: auto; height: 550px;">
+                            <pre>
+                                <code>
+                                    <xmp>int ldrsensor = 0;// initialize analog pin 0, connected with ldr
+int ledpin = 11;// initialize digital pin 11
+int val;// declare variable val
+int threshold = 1000;// declare threshold value
+                                                                                
+void setup() 
+{
+    pinMode(ledpin, OUTPUT);// set digital pin 11 as “output”
+    Serial.begin(9600);// set baud rate at “9600”
+}
+                                                                                
+void loop() 
+{
+    val = analogRead(ldrsensor);// read the value of the sensor and assign it to val
+    Serial.println(val);// display the value of val
+    if(val>=threshold)//if the light is below the threshold value, the LED will turns on
+    {
+        digitalWrite(ledpin, HIGH);
+        delay(2000);
+    }
+    else// otherwise the LED is off
+    {
+        digitalWrite(ledpin, LOW);
+        delay(1000);
+    }
+}
+                                    </xmp>
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="assigndetails">
+                        <h1>Output</h1>
+                        <p>Automatic Night Lamp using LDR and LED is created.</p>
+                        <video controls loop class="video">
+                            <source src="output videos/assign02.mp4" >
+                        </video>
+                    </div>
+                </div>
+
+
+                <!--assignment 03-->
+                <div class="accordion-item" id="assign3">
+                    <a class="accordion-link" href="#assign3">
+                        
+                        <ion-icon name="chevron-up-outline" class="up"></ion-icon>
+                        <ion-icon name="chevron-down-outline" class="down"></ion-icon>
+                    </a>
+                    <div class="assigndetails">
+                        <h1>Aim</h1>
+                        <p></p>
+                    </div>
+                    <div class="assigndetails">
+                        <h1>Components Required</h1>
+                        <ul type=circle>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                    <div class="assigndetails">
+                        <h1>Circuit Diagram</h1>
+                        <img src="" alt="">
+                    </div>
+                    <div class="assigndetails">
+                        <h1>Code</h1>
+                        <div class="code" style="overflow: auto; height: 550px;">
+                            <pre>
+                                <code>
+                                    <xmp>
+                                    </xmp>
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="assigndetails">
+                        <h1>Output</h1>
+                        <p></p>
+                        <video controls loop class="video">
+                            <source src="" >
+                        </video>
+                    </div>
+                </div>
+
+                <!--assignment 04-->
+                <div class="accordion-item" id="assign4">
+                    <a class="accordion-link" href="#assign4">
+                        
+                        <ion-icon name="chevron-up-outline" class="up"></ion-icon>
+                        <ion-icon name="chevron-down-outline" class="down"></ion-icon>
+                    </a>
+                    <div class="assigndetails">
+                        <h1>Aim</h1>
+                        <p></p>
+                    </div>
+                    <div class="assigndetails">
+                        <h1>Components Required</h1>
+                        <ul type = circle>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="assigndetails">
+                        <h1>Circuit Diagram</h1>
+                        <img src="" alt="">
+                    </div>
+                    <div class="assigndetails">
+                        <h1>Code</h1>
+                        <div class="code" style="overflow: auto; height: 550px;">
+                            <pre>
+                                <code>
+                                    <xmp>
+                                    </xmp>
+                                </code>
+                            </pre>
+                        </div>
+                    </div>
+                    <div class="assigndetails">
+                        <h1>Output</h1>
+                        <p></p>
+                        <video controls loop class="video">
+                            <source src="" >
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </section>
+
+    <!--assignments ends-->
+
+    <!-- footer section starts -->
+    <section class="footer">
+        <div class="links">
+            <a href="index.html#home">home</a>
+            <a href="index.html#about">about</a>
+            <a href="index.html#challenge">challenge</a>
+            <a href="#home">go to top</a>
+        </div>
+    </section>
+    <!-- footer section ends -->
+
+    <!--custom js file link-->
+    <script src="script.js"></script>
+
+    <!--ion icons-->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    
+</body>
+</html>
